@@ -14,7 +14,11 @@ const registerUser = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
         await db.promise().query("INSERT INTO users (name, email, password) VALUES (?, ?, ?)", [name, email, hashedPassword]);
 
-        res.status(201).json({ msg: "User registered successfully" });
+        const [rows] = await db.promise().query("SELECT * FROM users WHERE email = ?", [email]);
+
+        const token = jwt.sign({ id: rows[0].id }, process.env.JWT_SECRET, { expiresIn: "1d" });
+
+        res.status(200).json({ token, user: { id: rows[0].id, name: rows[0].name, email: rows[0].email }, msg: "User registered successfully" });
     } catch (err) {
         console.error(err);
         res.status(500).json({ msg: "Server error" });
