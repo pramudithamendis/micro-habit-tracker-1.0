@@ -2,14 +2,7 @@ const express = require("express");
 const router = express.Router();
 const verifyToken = require("../middleware/authMiddleware");
 const verifyPlus = require("../middleware/plusMiddleware");
-const {
-    createHabit,
-    getHabits,
-    getHabit,
-    checkHabit,
-    deleteHabit,
-    getHistory,
-} = require("../controllers/habitController");
+const { createHabit, getHabits, getHabit, checkHabit, deleteHabit, getHistory } = require("../controllers/habitController");
 
 router.post("/", verifyToken, verifyPlus, createHabit);
 router.get("/", verifyToken, getHabits);

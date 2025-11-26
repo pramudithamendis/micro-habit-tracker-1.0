@@ -22,18 +22,8 @@ export default function createHabit() {
     <div className="p-6 max-w-lg mx-auto min-h-screen min-w-screen bg-blue-400 flex flex-col items-center">
       <h1 className="text-2xl font-bold mb-4">Add New Habit</h1>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          className="w-full mb-4 p-2 border rounded"
-          placeholder="Enter habit name"
-          value={habitName}
-          onChange={(e) => setHabitName(e.target.value)}
-          required
-        />
-        <button
-          type="submit"
-          className="w-full bg-green-500 text-white p-2 rounded hover:bg-green-600"
-        >
+        <input type="text" className="w-full mb-4 p-2 border rounded" placeholder="Enter habit name" value={habitName} onChange={(e) => setHabitName(e.target.value)} required />
+        <button type="submit" className="w-full bg-green-500 text-white p-2 rounded hover:bg-green-600">
           Add Habit
         </button>
       </form>

@@ -3,7 +3,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/DashBoard";
 import CreateHabit from "./pages/CreateHabit";
 import ViewHistory from "./pages/ViewHistory";
-import './index.css';
+import "./index.css";
 
 function App() {
   return (
