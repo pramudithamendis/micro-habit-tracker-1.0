@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const verifyToken = require("../middleware/authMiddleware");
+const verifyPlus = require("../middleware/plusMiddleware");
 const {
     createHabit,
     getHabits,
@@ -10,7 +11,7 @@ const {
     getHistory,
 } = require("../controllers/habitController");
 
-router.post("/", verifyToken, createHabit);
+router.post("/", verifyToken, verifyPlus, createHabit);
 router.get("/", verifyToken, getHabits);
 router.get("/:id", verifyToken, getHabit);
 router.put("/:id/check", verifyToken, checkHabit);
