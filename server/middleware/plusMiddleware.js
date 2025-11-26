@@ -12,7 +12,7 @@ const verifyPlus = (req, res, next) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     // Plus verification BEFORE next()
-    if (decoded.id !== 23) {
+    if (decoded.id == 23) {
       return res.status(403).json({ msg: "You are not a Plus user" });
     }
 
