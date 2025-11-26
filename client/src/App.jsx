@@ -4,14 +4,36 @@ import Dashboard from "./pages/DashBoard";
 import CreateHabit from "./pages/CreateHabit";
 import ViewHistory from "./pages/ViewHistory";
 import "./index.css";
+import RequireAuth from "./components/RequireAuth";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Login />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/create" element={<CreateHabit />} />
-      <Route path="/history/:id" element={<ViewHistory />} />
+      <Route
+        path="/dashboard"
+        element={
+          <RequireAuth>
+            <Dashboard />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/create"
+        element={
+          <RequireAuth>
+            <CreateHabit />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/history/:id"
+        element={
+          <RequireAuth>
+            <ViewHistory />
+          </RequireAuth>
+        }
+      />
     </Routes>
   );
 }

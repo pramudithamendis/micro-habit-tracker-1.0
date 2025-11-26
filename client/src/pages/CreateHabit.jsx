@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../api/axios";
 
-export default function createHabit() {
+export default function CreateHabit() {
   const [habitName, setHabitName] = useState("");
   const navigate = useNavigate();
 
