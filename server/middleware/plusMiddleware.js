@@ -10,11 +10,14 @@ const verifyPlus = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = { id: decoded.id }; // attach user ID to request
-    next();
-    if (req.user.id != 23) {
-      return res.status(401).json({ msg: "You are not a Plus users" });
+
+    // Plus verification BEFORE next()
+    if (decoded.id !== 23) {
+      return res.status(403).json({ msg: "You are not a Plus user" });
     }
+
+    req.user = { id: decoded.id };
+    next();
   } catch (err) {
     return res.status(401).json({ msg: "Invalid token" });
   }
