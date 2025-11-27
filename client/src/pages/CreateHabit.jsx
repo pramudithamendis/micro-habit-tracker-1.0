@@ -14,7 +14,7 @@ export default function CreateHabit() {
         navigate("/dashboard"); // Go back to Dashboard after success
       }
     } catch (err) {
-      alert("Error adding habit. Try again.");
+      alert("Error adding habit. Try again .");
     }
   };
 
