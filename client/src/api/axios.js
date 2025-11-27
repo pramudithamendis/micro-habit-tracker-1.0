@@ -1,7 +1,9 @@
 import axios from "axios";
 
+import axios from "axios";
+
 const API = axios.create({
-  baseURL: "https://micro-habit-tracker-10-production.up.railway.app",
+  baseURL: import.meta.env.PROD ? "https://micro-habit-tracker-10-production.up.railway.app/api" : "/api",
 });
 
 API.interceptors.request.use((config) => {
